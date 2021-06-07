@@ -1,5 +1,8 @@
 
 
+import webbrowser
+import os
+import subprocess
 import cv2
 import imutils
 import numpy as np
@@ -51,15 +54,15 @@ def action_counter(pc):
     global k, l, u, t, p
     class_names = ["K", "L", "P", "T", "U"]
     # n = class_names[pc - 1]
-    if pc == 0:
+    if pc == 1:
         k += 1
-    elif pc == 1:
-        l += 1
     elif pc == 2:
-        p += 1
+        l += 1
     elif pc == 3:
-        t += 1
+        p += 1
     elif pc == 4:
+        t += 1
+    elif pc == 5:
         u += 1
     print((k, l, p, t, u))
     return (k, l, p, t, u)
@@ -69,15 +72,19 @@ def action_master(cls):
     status = ''
     global ty
     if cls == 0:  # k
-        status += email('K')
+        subprocess.Popen('C:\\Windows\\System32\\calc.exe')
+        #status += email('K')
     elif cls == 1:  # l
-        status += email('L')
+        os.system("C:\\Windows\\notepad.exe")
     elif cls == 2:  # p
-        status += data_entry()
+        webbrowser.open_new_tab("https://www.youtube.com/watch?v=OHbzWXdJgP0")
+        #status += data_entry()
     elif cls == 3:  # t
-        status += sendSMS()
+        webbrowser.open('https://www.google.co.uk/')
+        #status += sendSMS()
 
-    # elif cls ==4: #u
+    elif cls == 4: #u
+        subprocess.Popen("C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe")
     return status
 
 
